@@ -1,0 +1,47 @@
+header {
+	border-bottom: 1px dotted #ccc;
+}
+header h1 a {
+	color: #000;
+	text-shadow: 1px 2px 2px #222;
+}
+header h1 a:hover {
+	color: #000;
+}
+header h1 a img {
+/*	background-image: url('/assets/suggestion_box_blue-paper-hi.png');*/
+/*	background-repeat: no-repeat;*/
+/*	background-position: 0 0;*/
+	height: 36px;
+	margin: 14px 0 0 4px;
+}
+header h1 a span {
+	font-weight: normal;
+	letter-spacing: -1px;
+}
+div#signin {
+/*	background: #000;*/
+/*	border-bottom: 1px solid #000;*/
+	line-height: 24px;
+	margin: -10px 0 0 -20px;
+	padding: 10px 12px 0;
+/*	width: 200%;*/
+}
+div#signin a, div#signin span {
+	color: #000;
+	font-size: 14px;
+	padding: 8px;
+}
+div#signin li:first-child {
+	border-right: 1px solid #000;
+}
+div#signin a:hover {
+	background: #EBEFF2;
+	border-radius: 5px;
+}
+div#signin ul li {
+	float: left;
+}
+
+/* 103B73, 20638C, 3786A6, 4EABBF, EBEFF2*/
+/*45334A, 796B7D, CCC4B0, FFF1B5, FFA3A3*/

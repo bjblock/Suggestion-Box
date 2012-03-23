@@ -1,0 +1,33 @@
+<%= form_for([@suggestion_box, @suggestion]) do |f| %>
+  <% if @suggestion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@suggestion.errors.count, "error") %> prohibited this suggestion from being saved:</h2>
+
+      <ul>
+      <% @suggestion.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </p>
+  <!-- <p> -->
+    <%#= f.label :link %>
+    <%#= f.text_field :link %>
+  <!-- </p> -->
+    <%= f.hidden_field :suggestion_box_id, :value => @suggestion_box.id %>
+		<%  if session[:user_id] && !@suggestion_box.anonymous_suggestions? %>
+    	<%= f.hidden_field :user_id, :value => @current_user.id %>
+		<% end %>
+  <p>
+    <%= f.submit 'Suggest It!' %> <strong><%= link_to 'Cancel', '#' %></strong>
+  </p>
+<% end %>

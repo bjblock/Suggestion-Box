@@ -1,0 +1,35 @@
+<p>
+  <b>Suggestion box:</b>
+  <%= @suggestion.suggestion_box.title %>
+</p>
+
+<p>
+  <b>Suggestion:</b>
+  <%= @suggestion.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @suggestion.description %>
+</p>
+
+<% if @suggestion.link.present? %>
+	<p>
+	  <b>Link:</b>
+	  <%= @suggestion.link %>
+	</p>
+<% end %>
+
+<% if !@suggestion.suggestion_box.anonymous_suggestions? %>
+	<% if @suggestion_box.user == @current_user %>
+		<p>
+		  <b>User:</b>
+		  <%= @suggestion.user.name %> (<%= @suggestion.user.email %>)
+		</p>
+	<% end %>
+<% end %>
+
+<% if @suggestion_box.user == @current_user %>
+	<%= link_to 'Edit', edit_suggestion_box_suggestion_url(@suggestion_box, @suggestion) %> |
+<% end %>
+	<%= link_to 'Back', suggestion_box_url(@suggestion_box) %>

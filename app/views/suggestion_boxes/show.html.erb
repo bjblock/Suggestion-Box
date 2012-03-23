@@ -1,0 +1,90 @@
+<% if @suggestion_box.open? || @suggestion_box.user == @current_user %>
+	<aside>
+
+	  <h5><%= @suggestion_box.title %></h5>
+
+
+		<p>
+		  <b>Description:</b>
+		  <%= @suggestion_box.description %>
+		</p>
+
+		<p>
+		  <b>Created by:</b>
+		  <%= @suggestion_box.user.name %>
+		</p>
+
+		<% if @suggestion_box.organization.present? %>
+			<p>
+			  <b>Organization:</b>
+			  <%= @suggestion_box.organization_id %>
+			</p>
+		<% end %>
+
+		<% if session[:user_id].present? && @suggestion_box.user == @current_user %>
+			<p>
+			  <b>Privacy Status:</b>
+			  <%= @suggestion_box.by_invite_only %>
+			</p>
+
+			<p>
+			  <b>Votable:</b>
+			  <%= @suggestion_box.votable %>
+			</p>
+
+			<p>
+			  <b>Anonymous suggestions:</b>
+			  <%= @suggestion_box.anonymous_suggestions %>
+			</p>
+		<% end %>
+
+		<% if session[:user_id].present? && (@suggestion_box.user == @current_user) %>
+			<b>Admin Options:</b>
+			<ul>
+				<li><%= link_to 'Edit Suggestion Box details', edit_suggestion_box_path(@suggestion_box) %></li>
+				<li><%= link_to 'Read suggestions', suggestion_box_suggestions_path(@suggestion_box) %></li>
+
+				<li>
+					<% if @suggestion_box.open? %>
+						<%= link_to 'Close your Suggestion Box', close_suggestion_box_url, confirm: 'Users will no longer be able to submit suggestions. However, you will still have access to previously submitted data. Are you sure you want to close it?' %>
+					<% else %>
+					  <%= link_to 'Reopen your Suggestion Box', open_suggestion_box_url, confirm: 'Users will be able to make suggestions. Are you sure you want to reopen it?' %>
+					<% end %>
+				</li>
+
+				<li><%= link_to 'Delete your Suggestion Box', @suggestion_box, confirm: 'WARNING: This will permanently delete all records of this Suggestion Box and all associated suggestions. Are you sure you want to delete it?', :method => :delete %></li>
+			</ul>
+		<% end %>
+	
+	</aside>
+
+	<section>
+		<div id="suggestion_form">
+			<h5 class="make_suggestion"><%= link_to 'Make a suggestion', new_suggestion_box_suggestion_url(@suggestion_box.id) %></h5>
+			<div class="suggestion_form">
+				<% if @suggestion_box.anonymous_suggestions? || session[:user_id].present? %>	
+					<% if @suggestion_box.open? %>	
+						<%= render 'suggestions/form' %>
+					<% else %>
+					  Sorry, this Suggestion Box is closed
+					<% end %>
+				<% else %>
+					<p>
+					  This suggestion box requires that you must be logged in to make a suggestion.<br>
+						<strong><%= link_to 'Please sign in.', new_session_url %></strong>
+					</p>
+				<% end %>
+			</div>
+		</div>
+			<% if @suggestion_box.votable? && @suggestion_box.suggestions.present? %>
+				<p><h5>Suggestions</h5></p>
+				<%= render 'suggestions_for_voting' %>
+			<% end %>
+	</section>
+
+	<div class="clear"></div>
+<% else %>
+  <h5>This Suggestion Box is now closed.</h5>
+	<p><%= link_to 'See all open Suggestion Boxes', root_url %></p>
+<% end %>
+	

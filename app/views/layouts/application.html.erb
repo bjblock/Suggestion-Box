@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SuggestionBoxApp</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	<div id="container">
+		
+		<%= render 'shared/header' %>
+		
+		<%#= render 'shared/nav' %>
+
+		<p id="notice"><%= notice %></p>
+
+		<%= yield %>
+
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<%= form_for(@suggestion_box) do |f| %>
+  <% if @suggestion_box.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@suggestion_box.errors.count, "error") %> prohibited this suggestion box from being saved:</h2>
+
+      <ul>
+      <% @suggestion_box.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :title, 'Title* (required)' %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description, 'Description* (required)' %>
+    <%= f.text_area :description %>
+  </p>
+  <p class="radio_button">
+		Do you want your Suggestion Box to be public or private? Private suggestion boxes will be accessible by invite only.<br>
+    <%= f.label :by_invite_only, 'Public' %>
+    <%= f.radio_button :by_invite_only, false, :checked => true %>
+    <%= f.label :by_invite_only, 'Private' %>
+    <%= f.radio_button :by_invite_only, true %>
+  </p>
+  <p class="radio_button">
+		Should users be able to vote on suggestions? If not, submitted suggestions will not be visible.<br>
+    <%= f.label :votable, 'Yes' %>
+    <%= f.radio_button :votable, true, :checked => true %>
+    <%= f.label :votable, 'No' %>
+    <%= f.radio_button :votable, false %>
+  </p>
+  <p class="radio_button">
+		Do you want users to be able to submit suggestions anonymously?<br>
+    <%= f.label :anonymous_suggestions, 'Yes' %>
+    <%= f.radio_button :anonymous_suggestions, true, :checked => true %>
+    <%= f.label :anonymous_suggestions, 'No' %>
+    <%= f.radio_button :anonymous_suggestions, false %>
+  </p>
+  <div class="field">
+    <%#= f.hidden_field :organization_id, :value => @current_user.organization.id %>
+    <%= f.hidden_field :user_id, :value => @current_user.id %>
+  </div>
+  <p class="actions">
+    <%= f.submit %>
+  </p>
+<% end %>

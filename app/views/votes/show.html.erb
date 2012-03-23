@@ -1,0 +1,23 @@
+<p>
+  <b>Score:</b>
+  <%= @vote.score %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @vote.comment %>
+</p>
+
+<p>
+  <b>Suggestion:</b>
+  <%= @vote.suggestion_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @vote.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_vote_path(@vote) %> |
+<%= link_to 'Back', votes_path %>

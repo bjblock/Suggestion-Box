@@ -1,0 +1,32 @@
+<p>
+	<%# if session[:user_id].present? %>
+		<ul>
+			<% @suggestion_box.suggestions.each do |suggestion| %>
+				<li class="suggestion">
+					<div class="suggestion">
+					<p><%= link_to suggestion.name, suggestion_box_suggestion_url(@suggestion_box.id, suggestion.id) %></p>
+					<p><%= suggestion.description %></p>
+					<% if session[:user_id].present? %>
+						<% if @current_user.votes.nil? || @current_user.votes.find_by_suggestion_id(suggestion.id).nil? %>
+							<%= form_for([@suggestion_box, suggestion, @vote]) do |f| %>
+							    <%= f.label :score %>
+							    <%= f.select :score, [1,2,3,4,5] %> | 
+							    <%= f.label :comment %>
+							    <%= f.text_field :comment %>
+							    <%= f.hidden_field :suggestion_id, :value => suggestion.id %>
+							    <%= f.hidden_field :user_id, :value => @current_user.id %>
+							    <%= f.submit %>
+							<% end %>
+						<% else %>
+						  <%= suggestion.votes.count %>
+						<% end %>
+					<% else %>
+						<%= link_to 'Sign in to vote and see other comments', new_session_url %>  						
+					<% end %>
+					</div>
+				</li>
+			<% end %>
+		</ul>
+	<%# else %>
+	  
+</p>

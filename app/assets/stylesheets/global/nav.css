@@ -1,0 +1,41 @@
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+nav li {
+	float: left;
+}
+nav a {
+	background: #796B7D;
+	border-left: 1px solid rgba(0, 0, 0, 0.5);
+	border-right: 1px solid rgba(255, 255, 255, 0.2);
+	color: #fff;
+	display: block;
+	font-family: 'Helvetica Neue', Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 40px;
+	padding: 0 20px;
+	text-decoration: none;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+	text-transform: uppercase;
+}
+nav a:visited {
+	color: #fff;
+}
+nav a:hover {
+	background: #EBEFF2;
+	box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.5);
+	color: #796B7D;
+}
+nav li:first-child a {
+	border-left: none;
+	border-radius: 5px 0 0 5px;
+}
+nav li:last-child a {
+	border-right: none;
+	border-radius: 0 5px 5px 0;
+}
+/* 103B73, 20638C, 3786A6, 4EABBF, EBEFF2*/
+/*45334A, 796B7D, CCC4B0, FFF1B5, FFA3A3*/

@@ -1,0 +1,24 @@
+form input {
+	font-size: 12px;
+}
+
+form label {
+	margin-bottom: 0;
+}
+form p.radio_button label, form#new_vote label, form#new_vote select, form#new_vote input {
+	display: inline;
+}
+form #suggestion_box_description, form #suggestion_description {
+	height: 60px;
+	width: 400px;
+}
+form #suggestion_box_title, form #suggestion_name {
+	width: 394px;
+}
+form textarea {
+	border-left: 1px solid #bbb;
+	border-top: 2px inset;
+	font-size: 12px;
+	padding: 1px;
+}
+
