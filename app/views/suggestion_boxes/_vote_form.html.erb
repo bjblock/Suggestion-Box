@@ -1,0 +1,9 @@
+<%= form_for([@suggestion_box, suggestion, @vote]) do |f| %>
+    <%= f.label :score %>
+    <%= f.select :score, [1,2,3,4,5] %> | 
+    <%= f.label :comment %>
+    <%= f.text_field :comment %>
+    <%= f.hidden_field :suggestion_id, :value => suggestion.id %>
+    <%= f.hidden_field :user_id, :value => @current_user.id %>
+    <%= f.submit 'Vote' %>
+<% end %>

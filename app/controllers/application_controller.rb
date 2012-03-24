@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
       @current_user = User.find(session[:user_id])
       return
     else
-      redirect_to new_session_url, :notice => 'Sorry, you must first sign in.'
+      flash[:neg_notice] = 'Sorry, you must first sign in.'
+      redirect_to new_session_url
     end
   end
   
@@ -21,6 +22,19 @@ class ApplicationController < ActionController::Base
   #     redirect_to root_url, :notice => 'Oops, you\'re already logged in'.
   #   end
   # end
+  
+  def require_admin
+    if @current_user.administrator?
+      return
+    else
+      flash[:neg_notice] = 'Sorry, permission denied.'
+      redirect_to root_url
+    end
+  end
+  
+  def require_permission
+    
+  end
   
   def find_suggestion_box
     @suggestion_box = SuggestionBox.find(params[:suggestion_box_id])

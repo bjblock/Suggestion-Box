@@ -32,8 +32,11 @@ div#signin a, div#signin span {
 	font-size: 14px;
 	padding: 8px;
 }
-div#signin li:first-child {
+div#signin li {
 	border-right: 1px solid #000;
+}
+div#signin li:last-child {
+	border-right: none;
 }
 div#signin a:hover {
 	background: #EBEFF2;

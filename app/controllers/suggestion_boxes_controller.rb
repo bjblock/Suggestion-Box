@@ -4,6 +4,21 @@ class SuggestionBoxesController < ApplicationController
   # before_filter :check_for_user
   before_filter :require_login, :only => [:new, :create, :edit, :update, :destroy]
   # before_filter :require_permission, :only => [:edit, :update, :destroy]
+  before_filter :require_invitation_key, :only => :show
+  
+  def require_invitation_key
+    @suggestion_box = SuggestionBox.find(params[:id])
+    if @suggestion_box.by_invite_only?
+      if params[:key].present? && @suggestion_box.invitation_keys.find_by_key(params[:key]).present?
+        return
+      else
+        flash[:neg_notice] = 'Sorry, you must first enter a valid invitation key.'
+        redirect_to check_key_suggestion_box_url unless (@suggestion_box.user == @current_user)
+      end
+    else
+      return
+    end
+  end
 
   def index
     @suggestion_boxes = SuggestionBox.all
@@ -28,6 +43,8 @@ class SuggestionBoxesController < ApplicationController
 
   def new
     @suggestion_box = SuggestionBox.new
+    
+    @suggestion_box.invitation_keys.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,8 +61,13 @@ class SuggestionBoxesController < ApplicationController
 
     respond_to do |format|
       if @suggestion_box.save
-        format.html { redirect_to @suggestion_box, notice: 'Suggestion box was successfully created.' }
-        format.json { render json: @suggestion_box, status: :created, location: @suggestion_box }
+        if @suggestion_box.by_invite_only?
+          flash[:pos_notice] = 'Suggestion Box was successfully created. Now limit access by creating a password'
+          format.html { redirect_to new_invitation_key_url }
+        else
+          format.html { redirect_to @suggestion_box, notice: 'Suggestion box was successfully created.' }
+          format.json { render json: @suggestion_box, status: :created, location: @suggestion_box }
+        end
       else
         format.html { render action: "new" }
         format.json { render json: @suggestion_box.errors, status: :unprocessable_entity }
@@ -82,7 +104,8 @@ class SuggestionBoxesController < ApplicationController
     @suggestion_box.open = false
     @suggestion_box.save
     
-    redirect_to @suggestion_box, notice: 'This Suggestion Box is now closed and is now only viewable by you.'
+    flash[:neg_notice] = 'This Suggestion Box is now closed and is now only viewable by you.'
+    redirect_to @suggestion_box
   end
   
   def open
@@ -90,7 +113,12 @@ class SuggestionBoxesController < ApplicationController
     @suggestion_box.open = true
     @suggestion_box.save
     
-    redirect_to @suggestion_box, notice: 'This Suggestion Box is now open.'
+    flash[:pos_notice] = 'This Suggestion Box is now open.'
+    redirect_to @suggestion_box
   end
   
+  def check
+    @suggestion_box = SuggestionBox.find(params[:id])
+  end
+    
 end

@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120323155801) do
+ActiveRecord::Schema.define(:version => 20120323203706) do
+
+  create_table "invitation_keys", :force => true do |t|
+    t.integer  "suggestion_box_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "key"
+  end
 
   create_table "suggestion_boxes", :force => true do |t|
     t.string   "title"

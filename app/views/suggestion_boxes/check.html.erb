@@ -1,0 +1,14 @@
+<section>
+	<p>
+		To access this Suggestion Box, please enter the invitation key below:  
+	</p>
+	
+	<p>
+		<%= form_tag(@suggestion_box, :method => 'get') do %>
+			<%= label_tag :key, 'Invitation Key' %>
+			<%= text_field_tag :key %>
+			<%#= hidden_field_tag :suggestion_box_id, :value => @suggestion_box.id %>
+			<%= submit_tag 'Submit' %>
+		<% end %>
+	</p>
+</section>

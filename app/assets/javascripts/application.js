@@ -26,4 +26,13 @@ $(document).ready(function() {
 		$('section div.suggestion_form').slideUp(500);
 		// $('section h5.make_suggestion a').show();
 	});
+	$('section div.comment_box a.show_comments').toggle(function(e) {
+		e.preventDefault();
+		$(this).text('Hide Comments');
+		$(this).next('div.hidden_comments').slideDown(500);		
+	}, function(e) {
+		e.preventDefault();
+		$(this).text('Show Comments');
+		$(this).next('div.hidden_comments').slideUp(500);
+	});
 });

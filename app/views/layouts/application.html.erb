@@ -14,9 +14,13 @@
 		
 		<%#= render 'shared/nav' %>
 
-		<p id="notice"><%= notice %></p>
+		<%= render 'shared/notification' %>
 
 		<%= yield %>
+		
+		<div class="clear"></div>
+		
+		<%= render 'shared/footer' %>
 
 	</div>
 

@@ -5,3 +5,12 @@
 li.suggestion a {
 	font-size: 16px;
 }
+li.suggestion a.signin_to_vote, li.suggestion div.comments a {
+	font-size: 14px;
+}
+div.comment_box {
+	margin: 10px;
+}
+div.hidden_comments {
+	display: none;
+}

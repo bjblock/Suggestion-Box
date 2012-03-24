@@ -9,15 +9,33 @@
 </p>
 
 <p>
-  <b>Password digest:</b>
-  <%= @user.password_digest %>
+	<b>Suggestion Boxes you've created:</b>
+	<% if @user.suggestion_boxes.present? %>
+		<ol>
+			<% @user.suggestion_boxes.each do |suggestion_box| %>
+				<li><%= link_to suggestion_box.title, suggestion_box %></li>
+			<% end %>
+		</ol>
+	<% else %>
+		You haven't created a Suggestion Box yet.<br>
+		<%= link_to 'Would you like to create a Suggestion Box?', new_suggestion_box_url %>
+	<% end %>
 </p>
 
-<p>
-  <b>Administrator:</b>
-  <%= @user.administrator %>
-</p>
-
+<% if @user.suggestions.present? %>
+	<p>
+		<b>Suggestions you've made:</b><br>
+		(By default, suggestions are anonymous unless the Suggestion Box specifies otherwise. The suggestion box(es) below did not permit anonymous suggestions.)
+		<ol>
+			<% @user.suggestions.each do |suggestion| %>
+				<li>
+					Your suggestion: <%= link_to suggestion.name, suggestion_box_suggestion_url(suggestion.suggestion_box, suggestion) %><br>
+					For: <%= link_to suggestion.suggestion_box.title, suggestion_box_url(suggestion.suggestion_box) %>
+				</li>
+			<% end %>
+		</ol>
+	</p>
+<% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

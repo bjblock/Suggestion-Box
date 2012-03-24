@@ -21,25 +21,24 @@
 			</p>
 		<% end %>
 
-		<% if session[:user_id].present? && @suggestion_box.user == @current_user %>
-			<p>
-			  <b>Privacy Status:</b>
-			  <%= @suggestion_box.by_invite_only %>
-			</p>
-
-			<p>
-			  <b>Votable:</b>
-			  <%= @suggestion_box.votable %>
-			</p>
-
-			<p>
-			  <b>Anonymous suggestions:</b>
-			  <%= @suggestion_box.anonymous_suggestions %>
-			</p>
-		<% end %>
-
 		<% if session[:user_id].present? && (@suggestion_box.user == @current_user) %>
-			<b>Admin Options:</b>
+			<hr>
+			<p>
+			  <b>This Suggestion Box is:</b>
+			 	<ul>
+					<li><%= @suggestion_box.open? ? 'Open (accepting suggestions)' : 'Closed (not accepting suggestions)' %></li>
+					<li><%= !@suggestion_box.by_invite_only? ? 'Public' : 'Private' %></li>
+				</ul>
+			</p>
+
+			<p>
+				<b>Suggestions are:</b>
+				<ul>
+					<li><%= @suggestion_box.votable? ? 'Votable' : 'Not votable and not visible' %></li>
+					<li><%= @suggestion_box.anonymous_suggestions? ? 'Made anonymously' : 'Not made anonymously' %></li>
+				</ul>
+
+			<b>Administrator Options:</b>
 			<ul>
 				<li><%= link_to 'Edit Suggestion Box details', edit_suggestion_box_path(@suggestion_box) %></li>
 				<li><%= link_to 'Read suggestions', suggestion_box_suggestions_path(@suggestion_box) %></li>
@@ -51,6 +50,17 @@
 					  <%= link_to 'Reopen your Suggestion Box', open_suggestion_box_url, confirm: 'Users will be able to make suggestions. Are you sure you want to reopen it?' %>
 					<% end %>
 				</li>
+				
+				<% if @suggestion_box.by_invite_only? %>
+					<li>
+						<%= link_to "Add #{@suggestion_box.invitation_keys.present? ? 'another' : 'a' } Suggestion Box password", suggestion_box_new_invitation_key_url(@suggestion_box) %>
+					</li>
+					<% if @suggestion_box.invitation_keys.present? %>
+						<li>
+							<%= link_to 'Reset Suggestion Box passwords', suggestion_box_reset_invitation_keys_url(@suggestion_box) %>
+						</li>
+					<% end %>
+				<% end %>
 
 				<li><%= link_to 'Delete your Suggestion Box', @suggestion_box, confirm: 'WARNING: This will permanently delete all records of this Suggestion Box and all associated suggestions. Are you sure you want to delete it?', :method => :delete %></li>
 			</ul>

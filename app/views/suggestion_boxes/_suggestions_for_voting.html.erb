@@ -8,20 +8,28 @@
 					<p><%= suggestion.description %></p>
 					<% if session[:user_id].present? %>
 						<% if @current_user.votes.nil? || @current_user.votes.find_by_suggestion_id(suggestion.id).nil? %>
-							<%= form_for([@suggestion_box, suggestion, @vote]) do |f| %>
-							    <%= f.label :score %>
-							    <%= f.select :score, [1,2,3,4,5] %> | 
-							    <%= f.label :comment %>
-							    <%= f.text_field :comment %>
-							    <%= f.hidden_field :suggestion_id, :value => suggestion.id %>
-							    <%= f.hidden_field :user_id, :value => @current_user.id %>
-							    <%= f.submit %>
-							<% end %>
+							<%= render 'vote_form', :suggestion => suggestion %>
 						<% else %>
-						  <%= suggestion.votes.count %>
+						  Total Votes: <b><%= suggestion.votes.count %></b> | 
+							Average Score: <b><%= average_rating(suggestion) %></b>
+
+							<div class="comment_box">
+								<%= link_to 'Show Comments', '#', :class => 'show_comments' %>
+								<div id="<%= dom_id(suggestion) %>" class="hidden_comments">
+									<ul>
+										<% suggestion.votes.each do |vote| %>
+											<% if vote.comment.blank? %>
+											<% else %>
+												<li><em>"<%= vote.comment %>"</em></li>
+											<% end %>
+										<% end %>
+									</ul>
+								</div>
+							</div>	
+						  
 						<% end %>
 					<% else %>
-						<%= link_to 'Sign in to vote and see other comments', new_session_url %>  						
+						<%= link_to 'Sign in to vote for and comment on this suggestion', new_session_url, :class => 'signin_to_vote' %>  						
 					<% end %>
 					</div>
 				</li>
