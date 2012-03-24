@@ -3,8 +3,18 @@ class SuggestionBoxesController < ApplicationController
   before_filter :check_for_user
   # before_filter :check_for_user
   before_filter :require_login, :only => [:new, :create, :edit, :update, :destroy]
-  # before_filter :require_permission, :only => [:edit, :update, :destroy]
+  before_filter :require_suggestion_box_creator_or_admin, :only => [:edit, :update, :destroy, :close, :open]
   before_filter :require_invitation_key, :only => :show
+  
+  def require_suggestion_box_creator_or_admin
+    @suggestion_box = SuggestionBox.find(params[:id])
+    if (@suggestion_box.user == @current_user) || (@current_user.administrator?)
+      return
+    else
+      flash[:neg_notice] = 'Sorry, permission denied.'
+      redirect_to root_url
+    end
+  end
   
   def require_invitation_key
     @suggestion_box = SuggestionBox.find(params[:id])

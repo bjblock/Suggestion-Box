@@ -37,7 +37,11 @@ class ApplicationController < ActionController::Base
   end
   
   def find_suggestion_box
-    @suggestion_box = SuggestionBox.find(params[:suggestion_box_id])
+    if params[:suggestion_box_id].present?
+      @suggestion_box = SuggestionBox.find(params[:suggestion_box_id])
+    else
+      @suggestion_box = SuggestionBox.find(params[:id])
+    end
   end
   
 end

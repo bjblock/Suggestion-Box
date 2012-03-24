@@ -1,8 +1,8 @@
 class SuggestionsController < ApplicationController
 
   before_filter :check_for_user
-  before_filter :require_login, :only => [:edit, :update, :destroy]
-  # before_filter :require_admin, :only => [:edit, :update, :destroy]
+  before_filter :require_login, :except => :create
+  before_filter :require_admin, :except => :create
   before_filter :find_suggestion_box
   
   def index
@@ -26,7 +26,7 @@ class SuggestionsController < ApplicationController
 
   def new
     @suggestion = Suggestion.new
-    @suggestion_box = SuggestionBox.find(params[:suggestion_box_id])
+    # @suggestion_box = SuggestionBox.find(params[:suggestion_box_id])
 
     respond_to do |format|
       format.html # new.html.erb

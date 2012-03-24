@@ -2,6 +2,7 @@ class VotesController < ApplicationController
 
   before_filter :check_for_user
   before_filter :require_login, :only => [:create, :update, :destroy]
+  before_filter :require_admin, :except => :create
   before_filter :find_suggestion_box
   
   def index
