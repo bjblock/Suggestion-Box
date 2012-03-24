@@ -17,3 +17,9 @@ aside {
 	-webkit-border-radius: 5px;
 	border-radius: 5px;  
 }
+aside p {
+	margin: 10px 0;
+}
+aside ul {
+	margin: 10px 0 10px 20px;
+}

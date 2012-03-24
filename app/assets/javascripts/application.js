@@ -28,11 +28,11 @@ $(document).ready(function() {
 	});
 	$('section div.comment_box a.show_comments').toggle(function(e) {
 		e.preventDefault();
-		$(this).text('Hide Comments');
 		$(this).next('div.hidden_comments').slideDown(500);		
+		$(this).text('Hide Comments');
 	}, function(e) {
 		e.preventDefault();
-		$(this).text('Show Comments');
 		$(this).next('div.hidden_comments').slideUp(500);
+		$(this).text('Show Comments');
 	});
 });

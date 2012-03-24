@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120323203706) do
+ActiveRecord::Schema.define(:version => 20120324220918) do
 
   create_table "invitation_keys", :force => true do |t|
     t.integer  "suggestion_box_id"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(:version => 20120323203706) do
     t.datetime "updated_at",        :null => false
     t.string   "key"
   end
+
+  add_index "invitation_keys", ["suggestion_box_id"], :name => "index_invitation_keys_on_suggestion_box_id"
 
   create_table "suggestion_boxes", :force => true do |t|
     t.string   "title"
@@ -33,6 +35,9 @@ ActiveRecord::Schema.define(:version => 20120323203706) do
     t.boolean  "open",                  :default => true
   end
 
+  add_index "suggestion_boxes", ["organization_id"], :name => "index_suggestion_boxes_on_organization_id"
+  add_index "suggestion_boxes", ["user_id"], :name => "index_suggestion_boxes_on_user_id"
+
   create_table "suggestions", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -46,6 +51,9 @@ ActiveRecord::Schema.define(:version => 20120323203706) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
+
+  add_index "suggestions", ["suggestion_box_id"], :name => "index_suggestions_on_suggestion_box_id"
+  add_index "suggestions", ["user_id"], :name => "index_suggestions_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
@@ -64,5 +72,8 @@ ActiveRecord::Schema.define(:version => 20120323203706) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  add_index "votes", ["suggestion_id"], :name => "index_votes_on_suggestion_id"
+  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 
 end

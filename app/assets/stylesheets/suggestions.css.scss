@@ -2,6 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.suggestion-info p.name {
+	color: #000;
+	float: left;
+	font-size: 16px;
+	font-weight: bold;
+}
+.suggestion-info p.rating {
+	float: right;
+}
+.suggestion-info p.description {
+	clear: both;
+/*	margin-left: 20px;*/
+}
+.suggestion-info p.timestamp {
+	border-bottom: 1px dotted #888;
+	font-size: 12px;
+	padding: 0 0 10px 0;
+}
 li.suggestion a {
 	font-size: 16px;
 }
@@ -9,8 +27,38 @@ li.suggestion a.signin_to_vote, li.suggestion div.comments a {
 	font-size: 14px;
 }
 div.comment_box {
-	margin: 10px;
+	margin: 5px;
+	text-align: right;
 }
+div.comment_box a {
+/*	border: 1px solid #222;*/
+/*	border-radius: 5px;*/
+	
+/*	background: #796B7D;*/
+/*	border-left: 1px solid rgba(0, 0, 0, 0.5);*/
+/*	border-right: 1px solid rgba(0, 0, 0, 0.5);*/
+/*	color: #fff;*/
+/*	display: block;*/
+/*	font-family: 'Helvetica Neue', Helvetica, sans-serif;*/
+/*	font-size: 14px;*/
+/*	font-weight: bold;*/
+/*	line-height: 40px;*/
+/*	margin: 0 auto;*/
+/*	padding: 0 20px;*/
+/*	text-align: center;*/
+/*	text-decoration: none;*/
+/*	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);*/
+/*	text-transform: uppercase;*/
+/*	width: 200px;*/
+}
+div.comment_box a:hover {
+/*	background: #EBEFF2;*/
+/*	box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.5);*/
+/*	color: #796B7D;*/
+}
+
 div.hidden_comments {
 	display: none;
+	margin-top: 5px;
+	text-align: right;
 }

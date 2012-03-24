@@ -1,4 +1,4 @@
-<% if @suggestion_box.open? || @suggestion_box.user == @current_user %>
+<% if @suggestion_box.open? || (@suggestion_box.user == @current_user) %>
 	<aside>
 
 	  <h5><%= @suggestion_box.title %></h5>
@@ -21,7 +21,7 @@
 			</p>
 		<% end %>
 
-		<% if session[:user_id].present? && (@suggestion_box.user == @current_user) %>
+		<% if session[:user_id].present? && ((@suggestion_box.user == @current_user) || @current_user.administrator?) %>
 			<hr>
 			<p>
 			  <b>This Suggestion Box is:</b>
