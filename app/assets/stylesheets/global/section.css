@@ -1,7 +1,7 @@
 section {
 	float: right;
-	margin: 20px 18px 20px 0;
-	width: 560px;	
+	margin: 20px 0;
+	width: 580px;	
 }
 section div#suggestion_form, section div.suggestion-info {
 	border: 1px solid #ccc;
@@ -27,4 +27,7 @@ section div#suggestion_form div {
 section h5 {
 	text-align: left;
 	text-transform: uppercase;
+}
+section div#suggestion_form a {
+	text-transform: none;
 }

@@ -51,6 +51,9 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
+      if session[:invitation_key].nil?
+        session[:invitation_key] = []
+      end
       flash[:pos_notice] = "Thanks for signing up!"
       redirect_to root_url
     else

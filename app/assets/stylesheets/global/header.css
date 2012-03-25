@@ -22,6 +22,7 @@ header h1 a span {
 div#signin {
 /*	background: #000;*/
 /*	border-bottom: 1px solid #000;*/
+	float: right;
 	line-height: 24px;
 	margin: -10px 0 0 -20px;
 	padding: 10px 12px 0;
@@ -33,7 +34,7 @@ div#signin a, div#signin span {
 	padding: 8px;
 }
 div#signin li {
-	border-right: 1px solid #000;
+	border-right: 1px solid #ccc;
 }
 div#signin li:last-child {
 	border-right: none;
@@ -48,3 +49,39 @@ div#signin ul li {
 
 /* 103B73, 20638C, 3786A6, 4EABBF, EBEFF2*/
 /*45334A, 796B7D, CCC4B0, FFF1B5, FFA3A3*/
+
+
+
+figure.logo {
+	background: no-repeat #2A85E8;
+	-webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.35);
+	/*  background: -moz-linear-gradient(bottom, #fff 0%, #f2f2f2 120%);*/
+	/*  background: -ms-linear-gradient(bottom, #fff 0%, #f2f2f2 120%);*/
+	/*  background: -o-linear-gradient(bottom, #fff 0%, #f2f2f2 120%);*/
+	  background: -webkit-gradient(linear, 0% 0%, 0% 120%, from(#e9ffff), to(#2A85E8));
+	/*  background: -webkit-linear-gradient(bottom, #fff 0%, #f2f2f2 120%);*/
+	/*  background: linear-gradient(bottom, #fff 0%, #f2f2f2 120%);*/
+	width: 486px;
+	height: 90px;
+	float: left;
+	margin-top: -10px;
+}
+figure.logo h1 {
+	margin: 17px 18px 0 18px;
+	text-align: right;
+	font-size: 50px;
+	top: 0px;
+	font-weight: 100;
+	text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.5);
+	color: #000;
+}
+figure.logo h1 span {
+	font-weight: 200;
+}
+figure.logo a {
+	width: 486px;
+	height: 90px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}

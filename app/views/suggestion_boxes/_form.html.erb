@@ -20,14 +20,16 @@
     <%= f.text_area :description %>
   </p>
   <p class="radio_button">
-		Do you want your Suggestion Box to be public or private? Private suggestion boxes will be accessible by invite only.<br>
+		Do you want your Suggestion Box to be public or private?<br>
+		<em>(Private suggestion boxes will only be accessible with an invitation key.)</em><br>
     <%= f.label :by_invite_only, 'Public' %>
     <%= f.radio_button :by_invite_only, false, :checked => true %>
     <%= f.label :by_invite_only, 'Private' %>
     <%= f.radio_button :by_invite_only, true %>
   </p>
   <p class="radio_button">
-		Should users be able to vote on suggestions? If not, submitted suggestions will not be visible.<br>
+		Should users be able to vote on suggestions?<br>
+		<em>(If not, submitted suggestions will not be visible.)</em><br>
     <%= f.label :votable, 'Yes' %>
     <%= f.radio_button :votable, true, :checked => true %>
     <%= f.label :votable, 'No' %>
@@ -45,6 +47,6 @@
     <%= f.hidden_field :user_id, :value => @current_user.id %>
   </div>
   <p class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Create Suggestion Box' %> <%= link_to 'Cancel', suggestion_boxes_path %>
   </p>
 <% end %>

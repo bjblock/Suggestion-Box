@@ -1,19 +1,21 @@
-<h3>Sign In</h3>
+<aside>
+	<h4>Sign In</h4>
 
-<%= form_tag '/sessions' do %>
+	<%= form_tag '/sessions' do %>
 	
-	<p>
-		<%= label_tag :email %>
-		<%= text_field_tag :email %>
-	</p>
+		<p>
+			<%= label_tag :email %>
+			<%= text_field_tag :email %>
+		</p>
 	
-	<p>
-		<%= label_tag :password %>
-		<%= password_field_tag :password %>
-	</p>
+		<p>
+			<%= label_tag :password %>
+			<%= password_field_tag :password %>
+		</p>
 	
-	<p>
-		<%= submit_tag 'Sign in!' %>
-	</p>
+		<p>
+			<%= submit_tag 'Sign in!' %>
+		</p>
 	
-<% end %>
+	<% end %>
+</aside>

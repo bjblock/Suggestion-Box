@@ -1,17 +1,21 @@
-<p>
-	To limit access to your Suggestion Box, enter an invitation key below. Users will be asked to provide this invitation key before accessing your Suggestion Box.
-</p>
+<section>
+<div id="suggestion_form">
+		<p>
+			To limit access to your Suggestion Box, enter an invitation key below. Users will be asked to provide this invitation key before accessing your Suggestion Box.
+		</p>
 
-<p>
-	<%= form_for([@suggestion_box, @invitation_key]) do |f| %>
-		<%= f.label :key, 'Suggestion Box Invitation Key' %>
-		<%= f.text_field :key %>
-		<%= f.hidden_field :suggestion_box_id, :value => @suggestion_box.id %>
-		<%= f.submit 'Submit' %>
-	<% end %>
-</p>
+		<p>
+			<%= form_for([@suggestion_box, @invitation_key]) do |f| %>
+				<%= f.label :key, 'Suggestion Box Invitation Key' %>
+				<%= f.text_field :key %>
+				<%= f.hidden_field :suggestion_box_id, :value => @suggestion_box.id %>
+				<%= f.submit 'Submit' %>
+			<% end %>
+		</p>
 
-<p>
-	If you prefer not to limit access to your Suggestion Box, 
-	<%= link_to 'Change the privacy setting for your Suggestion Box', edit_suggestion_box_url(@suggestion_box) %>
-</p>
+		<p>
+			If you prefer not to limit access to your Suggestion Box, 
+			<%= link_to 'Change the privacy setting for your Suggestion Box', edit_suggestion_box_url(@suggestion_box) %>
+		</p>
+</div>
+</section>	

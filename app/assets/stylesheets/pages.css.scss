@@ -1,0 +1,12 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.contact-note p {
+	font-size: 14px;
+	font-weight: bold;
+}
+div.contact-note p.email {
+	font-size: 18px;
+	text-align: center;
+}

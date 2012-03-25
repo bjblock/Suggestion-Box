@@ -1,9 +1,11 @@
-<% if session[:user_id].nil? %>
-	<h3>New user</h3>
+<aside>
+	<% if session[:user_id].nil? %>
+		<h4>New user</h4>
 
-	<%= render 'form' %>
+		<%= render 'form' %>
 
-	<%= link_to 'Back', users_path %>
-<% else %>
-  Oops, you're already signed in.
-<% end %>
+		<%= link_to 'Back', users_path %>
+	<% else %>
+	  Oops, you're already signed in.
+	<% end %>
+</aside>	

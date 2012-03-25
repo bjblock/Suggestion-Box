@@ -15,15 +15,17 @@ class SuggestionBoxesController < ApplicationController
       redirect_to root_url
     end
   end
-  
+    
   def require_invitation_key
     @suggestion_box = SuggestionBox.find(params[:id])
-    if @suggestion_box.by_invite_only?
-      if params[:key].present? && @suggestion_box.invitation_keys.find_by_key(params[:key]).present?
+    if @suggestion_box.by_invite_only? && @suggestion_box.invitation_keys.present?
+      if (session[:invitation_key].present? && @suggestion_box.invitation_keys.find_by_key(session[:invitation_key]).present?)
+        return
+      elsif session[:user_id].present? && ((@suggestion_box.user == @current_user) || @current_user.administrator?)
         return
       else
         flash[:neg_notice] = 'Sorry, you must first enter a valid invitation key.'
-        redirect_to check_key_suggestion_box_url unless (@suggestion_box.user == @current_user)
+        redirect_to check_key_suggestion_box_url 
       end
     else
       return
@@ -43,7 +45,6 @@ class SuggestionBoxesController < ApplicationController
     @suggestion_box = SuggestionBox.find(params[:id])
     @suggestion = Suggestion.new
     @vote = Vote.new
-    @current_user = User.find(session[:user_id]) if session[:user_id].present?
 
     respond_to do |format|
       format.html # show.html.erb
@@ -73,7 +74,7 @@ class SuggestionBoxesController < ApplicationController
       if @suggestion_box.save
         if @suggestion_box.by_invite_only?
           flash[:pos_notice] = 'Suggestion Box was successfully created. Now limit access by creating a password'
-          format.html { redirect_to new_invitation_key_url }
+          format.html { redirect_to suggestion_box_new_invitation_key_url(@suggestion_box) }
         else
           format.html { redirect_to @suggestion_box, notice: 'Suggestion box was successfully created.' }
           format.json { render json: @suggestion_box, status: :created, location: @suggestion_box }
@@ -129,6 +130,20 @@ class SuggestionBoxesController < ApplicationController
   
   def check
     @suggestion_box = SuggestionBox.find(params[:id])
+  end
+  
+  def permission
+    @suggestion_box = SuggestionBox.find(params[:id])
+    if params[:key].present? && @suggestion_box.invitation_keys.find_by_key(params[:key]).present?
+      if session[:invitation_key].nil?
+        session[:invitation_key] = []
+      end
+      session[:invitation_key] << @suggestion_box.invitation_keys.find_by_key(params[:key]).key
+      redirect_to suggestion_box_url(@suggestion_box)
+    else
+      flash[:neg_notice] = 'Sorry, you must first enter a valid invitation key.'
+      redirect_to check_key_suggestion_box_url
+    end
   end
     
 end

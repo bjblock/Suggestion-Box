@@ -1,3 +1,83 @@
 // Place all the styles related to the SuggestionBoxes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div#suggestion-boxes {
+	margin-top: 20px;
+}
+
+div#suggestion-boxes table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+div#suggestion-boxes table a {
+	font-size: 14px;
+}
+div#suggestion-boxes table th {
+  background: #f2f2f2;
+  background: -moz-linear-gradient(top, #fff, #e6e6e6);
+  background: -ms-linear-gradient(top, #fff, #e6e6e6);
+  background: -o-linear-gradient(top, #fff, #e6e6e6);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#e6e6e6));
+  background: -webkit-linear-gradient(top, #fff, #e6e6e6);
+  background: linear-gradient(top, #fff, #e6e6e6);
+  border-bottom: 1px solid #ccc;
+  -moz-border-radius: 5px 5px 0 0;
+  -o-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  color: #000;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 12px;
+}
+div#suggestion-boxes table td {
+  background: #fff;
+/*  background: -moz-linear-gradient(bottom, #fff 0%, #f2f2f2 120%);*/
+/*  background: -ms-linear-gradient(bottom, #fff 0%, #f2f2f2 120%);*/
+/*  background: -o-linear-gradient(bottom, #fff 0%, #f2f2f2 120%);*/
+/*  background: -webkit-gradient(linear, 0% 0%, 0% 120%, from(#fff), to(#f2f2f2));*/
+/*  background: -webkit-linear-gradient(bottom, #fff 0%, #f2f2f2 120%);*/
+/*  background: linear-gradient(bottom, #fff 0%, #f2f2f2 120%);*/
+  border-bottom: 1px solid #fff;
+  border-top: 1px solid #e4e4e4;
+  padding: 14px 12px;
+/*  -moz-transition: all 0.2s linear;*/
+/*  -o-transition: all 0.2s linear;*/
+/*  -webkit-transition: all 0.2s linear;*/
+/*  transition: all 0.2s linear;*/
+}
+/*div#suggestion-boxes table tr:hover td {
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  -moz-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.08);
+  -o-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.08);
+}*/
+div#suggestion-boxes table tr:nth-child(2) td {
+/*  border-top: none;*/
+}
+div#suggestion-boxes table tr:last-child td {
+/*  border-bottom: none;*/
+/*  -moz-border-radius: 0 0 5px 5px;*/
+/*  -o-border-radius: 0 0 5px 5px;*/
+/*  -webkit-border-radius: 0 0 5px 5px;*/
+/*  border-radius: 0 0 5px 5px;*/
+}
+
+
+/*table tbody tr.even,*/
+/*table tbody tr.alt { background: #000; }*/
+/*table tbody tr:nth-child(even) { background: #000; }*/
+/*table tbody tr td { color: #333; padding: 9px 10px; vertical-align: top; border: none; }*/
+
+div#suggestion-boxes table tr.shaded td {
+	background: #fafafa;
+}
+div#suggestion-boxes table tr.unshaded td {
+	background: #fff;
+}
+

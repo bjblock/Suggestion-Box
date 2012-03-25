@@ -10,6 +10,9 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id
+      if session[:invitation_key].nil?
+        session[:invitation_key] = []
+      end
       redirect_to root_url, :notice => 'Welcome!'
     else
       render :new, :notice => 'Please try again.'

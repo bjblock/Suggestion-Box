@@ -7,7 +7,7 @@
 						<p class="name"><%= suggestion.name %><%#= link_to suggestion.name, suggestion_box_suggestion_url(@suggestion_box.id, suggestion.id) %></p>
 						<p class="rating">
 							Total Votes: <b><%= suggestion.votes.count %></b> | 
-							Average Score: <b><%= average_rating(suggestion) %></b>
+							Average Score: <b><%= suggestion.votes.count > 0 ? average_rating(suggestion) : '--' %></b>
 						</p>
 						<p class="description"><b>Description:</b> <%= suggestion.description %></p>
 						<p class="timestamp">Suggested on <em><%= suggestion.created_at %></em></p>
