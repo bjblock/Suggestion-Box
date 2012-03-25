@@ -3,7 +3,7 @@ section {
 	margin: 20px 0;
 	width: 580px;	
 }
-section div#suggestion_form, section div.suggestion-info {
+section div#suggestion_form, section div.suggestion-info, section div.contact-note {
 	border: 1px solid #ccc;
 	padding: 10px;
 	background: #efefef;

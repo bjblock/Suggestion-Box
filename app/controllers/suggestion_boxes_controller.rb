@@ -32,7 +32,8 @@ class SuggestionBoxesController < ApplicationController
   end
 
   def index
-    @suggestion_boxes = SuggestionBox.page(params[:page]).per(5)
+    @open_suggestion_boxes = SuggestionBox.where('open = ?', true).page(params[:page]).per(5)
+    @all_suggestion_boxes = SuggestionBox.page(params[:page]).per(5)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -43,7 +44,7 @@ class SuggestionBoxesController < ApplicationController
   def show
     @suggestion_box = SuggestionBox.find(params[:id])
     @suggestion = Suggestion.new
-    @suggestions = @suggestion_box.suggestions.page(params[:page]).per(2)
+    @suggestions = @suggestion_box.suggestions.page(params[:page]).per(5)
     @vote = Vote.new
 
     respond_to do |format|

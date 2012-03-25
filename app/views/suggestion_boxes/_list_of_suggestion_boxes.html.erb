@@ -1,0 +1,26 @@
+<div class="row">			
+
+	<tr class="<%= cycle("unshaded", "shaded") -%>">
+    <td><%= link_to suggestion_box.title, suggestion_box %></td>
+    <td><%= suggestion_box.description %></td>
+    <td>
+			<% if suggestion_box.organization.present? %>
+				<%= suggestion_box.organization.name %>
+			<% else %>
+			  None specified
+			<% end %>
+		</td>
+
+		<% if session[:user_id].present? && @current_user.administrator? %>
+	    <td><%= suggestion_box.open %></td>
+	    <td><%= suggestion_box.by_invite_only %></td>
+	    <td><%= suggestion_box.votable %></td>
+	    <td><%= suggestion_box.anonymous_suggestions %></td>
+
+	    <td><%= link_to 'Edit', edit_suggestion_box_path(suggestion_box) %></td>
+	    <td><%= link_to 'Destroy', suggestion_box, confirm: 'Are you sure?', method: :delete %></td>
+		<% end %>
+
+	  </tr>
+
+	</div>
