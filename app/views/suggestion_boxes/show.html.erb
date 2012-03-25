@@ -87,7 +87,10 @@
 			</div>
 		</div>
 			<% if @suggestion_box.votable? && @suggestion_box.suggestions.present? %>
-				<p><h5>Suggestions</h5></p>
+				<p>
+					<h5 class="list-heading">Suggestions</h5>
+					<%= paginate @suggestions %>
+				</p>	
 				<%= render 'suggestions_for_voting' %>
 			<% end %>
 	</section>

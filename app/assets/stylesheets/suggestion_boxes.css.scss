@@ -5,7 +5,12 @@
 div#suggestion-boxes {
 	margin-top: 20px;
 }
-
+div#suggestion-boxes div.create-link {
+	margin: 20px 0;
+}
+div#suggestion-boxes div.create-link h5 {
+	display: inline;
+}
 div#suggestion-boxes table {
   border-collapse: separate;
   border-spacing: 0;

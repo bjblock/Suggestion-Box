@@ -15,9 +15,9 @@
  *= require global/general
  *= require global/header
  *= require global/footer
- *= require global/nav
  *= require global/notification
  *= require global/errors
+ *= require global/pagination
  *= require global/aside
  *= require global/section
  *= require global/form

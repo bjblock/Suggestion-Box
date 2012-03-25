@@ -1,32 +1,30 @@
 	<div id="suggestion-boxes">	
 
-		<div class="row">			
-		<h5><%= link_to 'Create a Suggestion Box', new_suggestion_box_path %></h5>
-	
-		<br>
-
+		<div class="row create-link">			
+			<h5><%= link_to 'Create a Suggestion Box', new_suggestion_box_path %></h5>
+			<%= paginate @suggestion_boxes %>
 		</div>
 		
 		<table>
 		
-			<div class="row">					
 			<thead>
-			  <tr>
-			    <th>Suggestion Box</th>
-			    <th>Description</th>
-			    <th>Organization</th>
+				<div class="row">					
+				  <tr>
+				    <th>Suggestion Box</th>
+				    <th>Description</th>
+				    <th>Organization</th>
 
-					<% if session[:user_id].present? && @current_user.administrator? %>
-				    <th>Open</th>
-				    <th>Private</th>
-				    <th>Votable</th>
-				    <th>Anonymous</th>
-						<th></th>
-						<th></th>
-					<% end %>
-			  </tr>
+						<% if session[:user_id].present? && @current_user.administrator? %>
+					    <th>Open</th>
+					    <th>Private</th>
+					    <th>Votable</th>
+					    <th>Anonymous</th>
+							<th></th>
+							<th></th>
+						<% end %>
+				  </tr>
+				</div>
 			</thead>
-			</div>
 
 			<tbody>
 

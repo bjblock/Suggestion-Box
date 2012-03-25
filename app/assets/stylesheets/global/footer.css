@@ -1,7 +1,20 @@
 #footer { 
-	margin: 30px auto 60px; 
+	margin: 30px auto 60px;
 }
-#footer p { 
+#footer ul {
+	margin: 0 auto;
 	text-align: center;
+/*	width: 569px;*/
+}
+#footer li { 
+	display: inline;
 	font-size: 18px; 
+	padding: 5px;
+	text-align: center;
+}
+#footer li:first-child, #footer li.CA {
+	border-right: 1px solid #ccc;
+}
+#footer li:last-child, #footer li:nth-child(2) {
+	border-left: 1px solid #ccc;
 }

@@ -33,8 +33,11 @@ div#signin a, div#signin span {
 	font-size: 14px;
 	padding: 8px;
 }
+div#signin span {
+	font-weight: bold;
+}
 div#signin li {
-	border-right: 1px solid #ccc;
+	border-right: 2px solid #ccc;
 }
 div#signin li:last-child {
 	border-right: none;

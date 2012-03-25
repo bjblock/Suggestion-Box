@@ -1,7 +1,7 @@
-<p>
+<p class="list-suggestions">
 	<%# if session[:user_id].present? %>
 		<ul>
-			<% @suggestion_box.suggestions.each do |suggestion| %>
+			<% @suggestions.each do |suggestion| %>
 				<li class="suggestion">
 					<div class="suggestion-info">
 						<p class="name"><%= suggestion.name %><%#= link_to suggestion.name, suggestion_box_suggestion_url(@suggestion_box.id, suggestion.id) %></p>

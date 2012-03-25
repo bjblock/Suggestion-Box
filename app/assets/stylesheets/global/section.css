@@ -24,7 +24,8 @@ section div.suggestion_form {
 }
 section div#suggestion_form div {
 }
-section h5 {
+section h5.list-heading {
+	display: inline;
 	text-align: left;
 	text-transform: uppercase;
 }

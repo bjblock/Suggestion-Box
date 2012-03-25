@@ -1,7 +1,6 @@
 class SuggestionBoxesController < ApplicationController
 
   before_filter :check_for_user
-  # before_filter :check_for_user
   before_filter :require_login, :only => [:new, :create, :edit, :update, :destroy]
   before_filter :require_suggestion_box_creator_or_admin, :only => [:edit, :update, :destroy, :close, :open]
   before_filter :require_invitation_key, :only => :show
@@ -33,7 +32,7 @@ class SuggestionBoxesController < ApplicationController
   end
 
   def index
-    @suggestion_boxes = SuggestionBox.all
+    @suggestion_boxes = SuggestionBox.page(params[:page]).per(5)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,6 +43,7 @@ class SuggestionBoxesController < ApplicationController
   def show
     @suggestion_box = SuggestionBox.find(params[:id])
     @suggestion = Suggestion.new
+    @suggestions = @suggestion_box.suggestions.page(params[:page]).per(2)
     @vote = Vote.new
 
     respond_to do |format|
