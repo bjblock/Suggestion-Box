@@ -3,7 +3,7 @@ section {
 	margin: 20px 0;
 	width: 580px;	
 }
-section div#suggestion_form, section div.suggestion-info, section div.contact-note {
+section div#suggestion_form, section div.suggestion-info, section div.contact-note, section div.user-boxes, section div.user-suggestions {
 	border: 1px solid #ccc;
 	padding: 10px;
 	background: #efefef;
@@ -31,4 +31,7 @@ section h5.list-heading {
 }
 section div#suggestion_form a {
 	text-transform: none;
+}
+section div.user-suggestions {
+	margin-top: 20px;
 }

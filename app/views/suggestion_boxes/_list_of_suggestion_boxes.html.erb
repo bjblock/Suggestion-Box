@@ -3,13 +3,13 @@
 	<tr class="<%= cycle("unshaded", "shaded") -%>">
     <td><%= link_to suggestion_box.title, suggestion_box %></td>
     <td><%= suggestion_box.description %></td>
-    <td>
-			<% if suggestion_box.organization.present? %>
-				<%= suggestion_box.organization.name %>
-			<% else %>
-			  None specified
-			<% end %>
-		</td>
+    <!-- <td> -->
+			<%# if suggestion_box.organization.present? %>
+				<%#= suggestion_box.organization.name %>
+			<%# else %>
+			  <!-- None specified -->
+			<%# end %>
+		<!-- </td> -->
 
 		<% if session[:user_id].present? && @current_user.administrator? %>
 	    <td><%= suggestion_box.open %></td>
