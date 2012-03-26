@@ -44,7 +44,7 @@ class SuggestionsController < ApplicationController
 
     respond_to do |format|
       if @suggestion.save
-        format.html { redirect_to suggestion_box_suggestion_url(@suggestion_box, @suggestion), notice: 'Suggestion was successfully created.' }
+        format.html { redirect_to suggestion_box_url(@suggestion_box), notice: 'Suggestion was successfully created.' }
       else
         format.html { render action: "new" }
       end
