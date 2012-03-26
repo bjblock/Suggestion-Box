@@ -21,7 +21,7 @@
  *= require global/aside
  *= require global/section
  *= require global/form
+ *= require pages
  *= require suggestion_boxes
  *= require suggestions
- *= require pages
 */

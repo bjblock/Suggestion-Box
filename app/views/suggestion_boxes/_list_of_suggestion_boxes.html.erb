@@ -1,7 +1,7 @@
 <div class="row">			
 
 	<tr class="<%= cycle("unshaded", "shaded") -%>">
-    <td><%= link_to suggestion_box.title, suggestion_box %></td>
+    <td class="title"><%= link_to suggestion_box.title, suggestion_box %></td>
     <td><%= suggestion_box.description %></td>
     <!-- <td> -->
 			<%# if suggestion_box.organization.present? %>
