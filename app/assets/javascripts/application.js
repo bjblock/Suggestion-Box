@@ -24,7 +24,7 @@ $(document).ready(function() {
 	$('section div.suggestion_form a').click(function(e) {
 		e.preventDefault();
 		$('section div.suggestion_form').slideUp(500);
-		// $('section h5.make_suggestion a').show();
+		$("input#suggestion_name, textarea#suggestion_description").val('');
 	});
 	$('section div.comment_box a.show_comments').toggle(function(e) {
 		e.preventDefault();

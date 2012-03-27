@@ -41,9 +41,12 @@ class SuggestionsController < ApplicationController
   def create
     @suggestion = Suggestion.new(params[:suggestion])
     # @suggestion_box = SuggestionBox.find(params[:suggestion_box_id])
+    @suggestion_box = SuggestionBox.find(params[:suggestion_box_id])
+    @vote = Vote.new
 
     respond_to do |format|
       if @suggestion.save
+        format.js
         format.html { redirect_to suggestion_box_url(@suggestion_box), notice: 'Suggestion was successfully created.' }
       else
         format.html { render action: "new" }

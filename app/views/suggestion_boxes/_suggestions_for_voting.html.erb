@@ -1,47 +1,8 @@
 <p class="list-suggestions">
 	<%# if session[:user_id].present? %>
-		<ul>
+		<ul id="suggestion-list">
 			<% @suggestions.each do |suggestion| %>
-				<li class="suggestion">
-					<div class="suggestion-info">
-						<p class="name"><%= suggestion.name %><%#= link_to suggestion.name, suggestion_box_suggestion_url(@suggestion_box.id, suggestion.id) %></p>
-						<p class="rating">
-							Total Votes: <b><%= suggestion.votes.count %></b> | 
-							Average Score: <b><%= suggestion.votes.count > 0 ? average_rating(suggestion) : '--' %></b>
-						</p>
-						<p class="description"><b>Description:</b> <%= suggestion.description %></p>
-						<p class="timestamp">Suggested on <em><%= suggestion.created_at %></em></p>
-
-						<% if session[:user_id].present? %>
-							<% if @current_user.votes.nil? || @current_user.votes.find_by_suggestion_id(suggestion.id).nil? %>
-						
-								<%= render 'vote_form', :suggestion => suggestion %>
-						
-							<% else %>
-						
-								<div class="comment_box">
-									<%= link_to 'Show Comments', '#', :class => 'show_comments' %>
-									<div id="<%= dom_id(suggestion) %>" class="hidden_comments">
-										<ul>
-											<% suggestion.votes.each do |vote| %>
-												<% if vote.comment.blank? %>
-												<% else %>
-													<li><em>"<%= vote.comment %>"</em></li>
-												<% end %>
-											<% end %>
-										</ul>
-									</div>
-								</div>	
-						  
-							<% end %>
-						<% else %>
-
-							<%= link_to 'Sign in to vote for and comment on this suggestion', new_session_url, :class => 'signin_to_vote' %>  						
-
-						<% end %>
-
-					</div>
-				</li>
+				<%= render 'suggestion_li', :suggestion => suggestion %>
 			<% end %>
 		</ul>
 	<%# else %>
