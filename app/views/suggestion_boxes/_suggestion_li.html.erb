@@ -10,7 +10,7 @@
 		<p class="description"><b>Description:</b> <%= suggestion.description %></p>
 		<p class="timestamp">
 			Suggested on <em><%= suggestion.created_at %></em>
-			<% if (@suggestion_box.anonymous_suggestions == false) && (suggestion.user.name.present?) %>
+			<% if (@suggestion_box.anonymous_suggestions == false) && (suggestion.user.present?) %>
 		 		<span class="author">Suggested by <em><%= suggestion.user.name %></em></span>
 			<% end %>
 		</p>
