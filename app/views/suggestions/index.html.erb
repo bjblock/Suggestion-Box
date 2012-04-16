@@ -21,7 +21,7 @@
     <td><%= link_to suggestion.name, suggestion_box_suggestion_url(@suggestion_box.id, suggestion.id) %></td>
     <td><%= suggestion.description %></td>
     <td><%= suggestion.link %></td>
-    <td><%= suggestion.user.name %></td>
+    <td><%= suggestion.user.name if suggestion.user.present? %></td>
     <td><%= link_to 'Edit', edit_suggestion_box_suggestion_url(@suggestion_box.id, suggestion.id) %></td>
     <td><%= link_to 'Delete', suggestion_box_suggestion_url(@suggestion_box.id, suggestion.id), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
