@@ -25,7 +25,7 @@
 			  <%= @suggestion_box.organization_id %>
 			</p>
 		<% end %>
-
+		
 		<% if session[:user_id].present? && ((@suggestion_box.user == @current_user) || @current_user.administrator?) %>
 			<hr>
 			<p>
@@ -85,8 +85,8 @@
 					<% end %>
 				<% else %>
 					<p>
-					  This suggestion box requires that you must be logged in to make a suggestion.<br>
-						<strong><%= link_to 'Please sign in.', new_session_url %></strong>
+					  This suggestion box does not permit anonymous suggestions.<br>
+						<strong><%= link_to 'Please sign in first.', new_session_url %></strong>
 					</p>
 				<% end %>
 			</div>
