@@ -1,31 +1,33 @@
-<h1>Listing suggestions</h1>
+<div id="suggestion-boxes">
+<div class="row create-link">
+	<h5>Suggestions for <%= @suggestion_box.title %></h5>
+</div>
 
 <table>
+	<thead>
   <tr>
     <th>Name</th>
     <th>Description</th>
     <th>Link</th>
-    <th>Suggestion box</th>
     <th>User</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
+	</thead>
 
 <% @suggestion_box.suggestions.each do |suggestion| %>
   <tr>
-    <td><%= suggestion.name %></td>
+    <td><%= link_to suggestion.name, suggestion_box_suggestion_url(@suggestion_box.id, suggestion.id) %></td>
     <td><%= suggestion.description %></td>
     <td><%= suggestion.link %></td>
-    <td><%= suggestion.suggestion_box_id %></td>
-    <td><%= suggestion.user_id %></td>
-    <td><%= link_to 'Show', suggestion_box_suggestion_url(@suggestion_box.id, suggestion.id) %></td>
+    <td><%= suggestion.user.name %></td>
     <td><%= link_to 'Edit', edit_suggestion_box_suggestion_url(@suggestion_box.id, suggestion.id) %></td>
-    <td><%= link_to 'Destroy', suggestion_box_suggestion_url(@suggestion_box.id, suggestion.id), confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Delete', suggestion_box_suggestion_url(@suggestion_box.id, suggestion.id), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
-
+</div>
 <br />
 
-<%= link_to 'New Suggestion', new_suggestion_box_suggestion_url(@suggestion_box.id) %>
+<%= link_to 'Back to your suggestion box\'s main view', suggestion_box_url(@suggestion_box) %>

@@ -13,6 +13,11 @@
 		  <b>Created by:</b>
 		  <%= @suggestion_box.user.name %>
 		</p>
+		
+		<p>
+			<b># of Suggestions:</b>
+			<%= @suggestion_box.suggestions.count %>
+		</p>
 
 		<% if @suggestion_box.organization.present? %>
 			<p>

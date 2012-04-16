@@ -1,0 +1,2 @@
+$("ul#suggestion-list").prepend("<%= escape_javascript(render('suggestion_boxes/suggestion_li', :suggestion => @suggestion)) %>");
+$("input#suggestion_name, textarea#suggestion_description").val('');

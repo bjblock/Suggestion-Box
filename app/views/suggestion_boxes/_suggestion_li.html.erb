@@ -8,7 +8,12 @@
 			Average Score: <b><%= suggestion.votes.count > 0 ? average_rating(suggestion) : '--' %></b>
 		</p>
 		<p class="description"><b>Description:</b> <%= suggestion.description %></p>
-		<p class="timestamp">Suggested on <em><%= suggestion.created_at %></em></p>
+		<p class="timestamp">
+			Suggested on <em><%= suggestion.created_at %></em>
+			<% if @suggestion_box.anonymous_suggestions == false %>
+		 		<span class="author">Suggested by <em><%= suggestion.user.name %></em></span>
+			<% end %>
+		</p>
 
 		<% if session[:user_id].present? %>
 			<% if @current_user.votes.nil? || @current_user.votes.find_by_suggestion_id(suggestion.id).nil? %>

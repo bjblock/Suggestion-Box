@@ -2,8 +2,19 @@ class SuggestionsController < ApplicationController
 
   before_filter :check_for_user
   before_filter :require_login, :except => :create
-  before_filter :require_admin, :except => :create
+  # before_filter :require_admin, :except => :create
+  before_filter :require_suggestion_box_creator_or_admin, :except => :create
   before_filter :find_suggestion_box
+  
+  def require_suggestion_box_creator_or_admin
+    @suggestion_box = SuggestionBox.find(params[:suggestion_box_id])
+    if (@suggestion_box.user == @current_user) || (@current_user.administrator?)
+      return
+    else
+      flash[:neg_notice] = 'Sorry, permission denied.'
+      redirect_to root_url
+    end
+  end
   
   def index
     @suggestions = Suggestion.all

@@ -38,9 +38,11 @@ class VotesController < ApplicationController
 
   def create
     @vote = Vote.new(params[:vote])
+    @suggestion_box = SuggestionBox.find(params[:suggestion_box_id])
 
     respond_to do |format|
       if @vote.save
+        # format.js
         format.html { redirect_to suggestion_box_url(@suggestion_box), notice: 'Vote was successfully created.' }
         format.json { render json: @vote, status: :created, location: @vote }
       else
