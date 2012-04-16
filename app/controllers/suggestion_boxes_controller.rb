@@ -5,6 +5,8 @@ class SuggestionBoxesController < ApplicationController
   before_filter :require_suggestion_box_creator_or_admin, :only => [:edit, :update, :destroy, :close, :open]
   before_filter :require_invitation_key, :only => :show
   
+  # helper_method :sort_column
+  
   def require_suggestion_box_creator_or_admin
     @suggestion_box = SuggestionBox.find(params[:id])
     if (@suggestion_box.user == @current_user) || (@current_user.administrator?)
@@ -44,7 +46,11 @@ class SuggestionBoxesController < ApplicationController
   def show
     @suggestion_box = SuggestionBox.find(params[:id])
     @suggestion = Suggestion.new
-    @suggestions = @suggestion_box.suggestions.order("created_at DESC") #.page(params[:page]).per(5)
+    # if params[:sort]
+      # @suggestions = @suggestion_box.suggestions.order(sort_column) #.page(params[:page]).per(5)
+    # else
+      @suggestions = @suggestion_box.suggestions.order("created_at DESC") #.page(params[:page]).per(5)
+    # end
     @vote = Vote.new
 
     respond_to do |format|
@@ -146,5 +152,11 @@ class SuggestionBoxesController < ApplicationController
       redirect_to check_key_suggestion_box_url
     end
   end
+  
+  # private
+  
+  # def sort_column
+    # Suggestion.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+  # end
     
 end

@@ -26,6 +26,15 @@
 			</p>
 		<% end %>
 		
+		<!-- <p>Sort By:
+			<ul class="circle sort">
+				<li><%#= link_to 'Newest added', :sort => 'created_at' %></li>
+				<li><%#= link_to 'Name of suggestion', :sort => 'name' %></li>
+				<li><%#= link_to 'Most votes', :sort => 'total_votes' %></li>
+				<li><%#= link_to 'Highest average score', :sort => 'average_score' %></li>
+			</ul>
+		</p> -->
+		
 		<% if session[:user_id].present? && ((@suggestion_box.user == @current_user) || @current_user.administrator?) %>
 			<hr>
 			<p>

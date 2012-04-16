@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120324220918) do
+ActiveRecord::Schema.define(:version => 20120416082127) do
 
   create_table "invitation_keys", :force => true do |t|
     t.integer  "suggestion_box_id"
@@ -43,13 +43,13 @@ ActiveRecord::Schema.define(:version => 20120324220918) do
     t.text     "description"
     t.string   "link"
     t.boolean  "anonymous"
-    t.integer  "total_votes"
-    t.integer  "total_score"
-    t.float    "average_score"
+    t.integer  "total_votes",       :default => 0
+    t.integer  "total_score",       :default => 0
+    t.float    "average_score",     :default => 0.0
     t.integer  "suggestion_box_id"
     t.integer  "user_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
   add_index "suggestions", ["suggestion_box_id"], :name => "index_suggestions_on_suggestion_box_id"
