@@ -44,7 +44,7 @@ class SuggestionBoxesController < ApplicationController
   def show
     @suggestion_box = SuggestionBox.find(params[:id])
     @suggestion = Suggestion.new
-    @suggestions = @suggestion_box.suggestions.order("created_at DESC") #.page(params[:page]).per(5)
+    @suggestions = @suggestion_box.suggestions.order("created_at DESC").page(params[:page]).per(5)
     @vote = Vote.new
 
     respond_to do |format|
