@@ -28,6 +28,6 @@
     	<%= f.hidden_field :user_id, :value => @current_user.id %>
 		<% end %>
   <p>
-    <%= f.submit 'Suggest It!' %> <strong><%= link_to 'Cancel', '#' %></strong>
+    <%= f.submit 'Suggest It!' %> <strong><%= link_to 'Cancel', '#', :id => 'cancel-link' %></strong>
   </p>
 <% end %>

@@ -86,7 +86,7 @@
 				<% else %>
 					<p>
 					  This suggestion box does not permit anonymous suggestions.<br>
-						<strong><%= link_to 'Please sign in first.', new_session_url %></strong>
+						<strong><%= link_to 'Please sign in first.', new_session_url, :id => 'signin-link' %></strong>
 					</p>
 				<% end %>
 			</div>
